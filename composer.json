@@ -1,0 +1,17 @@
+{
+  "name": "vendor_name/phplab7",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "steve",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "phplab7\\Model\\" : "Model/"
+    }
+  }
+}
