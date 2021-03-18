@@ -12,6 +12,8 @@ $cars = $c->getAllCars($dbcon);
 
 ?>
 
+<!-- test commit -->
+
 <html lang="en">
 <head>
     <title>Lab 6: PHP and SQL</title>
