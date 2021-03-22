@@ -4,7 +4,6 @@ use phplab7\Model\{database, car};
 
 require_once "vendor/autoload.php";
 
-
 $dbcon = database::getDb();
 $c = new Car();
 

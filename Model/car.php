@@ -2,6 +2,20 @@
 namespace phplab7\Model;
 class Car {
 
+    public function getMakes($db) {
+        $sql = "SELECT * FROM makes";
+
+        $pdostm = $db->prepare($sql);
+        $pdostm->execute();
+
+        //getting results
+        $results = $pdostm->fetchAll(\PDO::FETCH_OBJ);
+        return $results;
+
+
+    }
+
+
     public function getAllCars($dbcon){
         $sql = "Select * FROM cars";
 
@@ -12,13 +26,13 @@ class Car {
         return $cars;
     }
 
-    public function addCar ($car_make, $car_model, $car_year, $db){
-        $sql = "insert into cars (car_make, car_model, car_year) values (:car_make, :car_model, :car_year)";
+    public function addCar ($make_id, $car_model, $car_year, $db){
+        $sql = "insert into cars (make_id, car_model, car_year) values (:make_id, :car_model, :car_year)";
 
 
         $post = $db->prepare($sql);
 
-        $post->bindParam(':car_make', $car_make);
+        $post->bindParam(':make_id', $make_id);
         $post->bindParam(':car_model', $car_model);
         $post->bindParam(':car_year', $car_year);
 

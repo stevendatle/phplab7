@@ -1,6 +1,12 @@
 <?php
 
 use phplab7\Model\{database, car};
+require_once 'Model/database.php';
+require_once 'Model/car.php';
+require_once "Functions/form-function.php";
+
+$c = new Car();
+$makes = $c->getMakes(database::getDb());
 
 if (isset($_POST[addCar])){
 
@@ -40,7 +46,9 @@ if (isset($_POST[addCar])){
 
     <div>
         <label for="make">Make: </label>
-        <input type="text" name="make" id="make" placeholder="Enter make">
+        <select name="make" id="make">
+            <?php echo fillSelect($makes) ?>
+        </select>
     </div>
 
     <div>
