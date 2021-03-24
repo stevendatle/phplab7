@@ -37,7 +37,7 @@ $cars = $c->getAllCars($dbcon);
         <tr>
             <!-- because fetched as associative array, have to format it like below -->
             <th><?= $car['carid']; ?></th>
-            <td><?= $car['car_make']; ?></td>
+            <td><?= $car['make']; ?></td>
             <td><?= $car['car_model']; ?></td>
             <td><?= $car['car_year']; ?></td>
 

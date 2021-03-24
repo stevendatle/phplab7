@@ -1,5 +1,7 @@
 <?php
 namespace phplab7\Model;
+
+
 class Car {
 
     public function getMakes($db) {
@@ -57,9 +59,9 @@ class Car {
         return $post->fetch(\PDO::FETCH_OBJ);
     }
 
-    public function updateCar($carid, $car_make, $car_model, $car_year, $db){
+    public function updateCar($carid, $make, $car_model, $car_year, $db){
         $sql = "Update cars 
-                set car_make = :car_make,
+                set make_id = :make,
                     car_model = :car_model,
                     car_year = :car_year
                     WHERE carid = :carid
@@ -67,7 +69,7 @@ class Car {
 
         $post = $db->prepare($sql);
 
-        $post->bindParam(':car_make', $car_make);
+        $post->bindParam(':make', $make);
         $post->bindParam(':car_model', $car_model);
         $post->bindParam(':car_year', $car_year);
         $post->bindParam(':carid', $carid);

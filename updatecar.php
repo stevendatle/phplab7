@@ -1,8 +1,13 @@
 <?php
 use phplab7\Model\{database, car};
+require_once "Model/database.php";
+require_once "Model/car.php";
 
 //easy way to initalize multiple variables as empty string
-$car_make = $car_model = $car_year = "";
+$make = $car_model = $car_year = "";
+
+$c2 = new Car();
+$makes = $c2->getMakes(database::getDb());
 
 if (isset($_POST['updateCar'])){
     $carid = $_POST['carid'];
@@ -19,13 +24,13 @@ if (isset($_POST['updateCar'])){
 
 if (isset($_POST['updateCarFinal'])){
     $carid = $_POST['carrid'];
-    $car_make = $_POST['car_make'];
+    $make = $_POST['make'];
     $car_model = $_POST['car_model'];
     $car_year = $_POST['car_year'];
 
     $db = database::getDb();
     $c = new Car();
-    $count = $c->updateCar($carid, $car_make, $car_model, $car_year, $db);
+    $count = $c->updateCar($carid, $make, $car_model, $car_year, $db);
 
     if ($count){
         header('Location: index.php');
@@ -51,7 +56,9 @@ if (isset($_POST['updateCarFinal'])){
     <input type="hidden" name="carrid" value="<?= $carid; ?>"
     <div>
         <label for="make">Make: </label>
-        <input type="text" name="car_make" id="make" value="<?= $car_make; ?>" placeholder="Enter make">
+        <select name="make" id="make">
+            <?php echo fillSelect($makes) ?>
+        </select>
     </div>
 
     <div>

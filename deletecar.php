@@ -1,5 +1,6 @@
 <?php
 use phplab7\Model\{database, car};
+require_once "vendor/autoload.php";
 
 if (isset($_POST['carid'])){
     $carid = $_POST['carid'];
